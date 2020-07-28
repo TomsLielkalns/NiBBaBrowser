@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiBBaBrowser", "NiBBaBrowser.csproj", "{FC844711-AEB6-4FEB-9A9F-6623686056CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Debug|x64.ActiveCfg = Debug|x64
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Debug|x64.Build.0 = Debug|x64
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Release|x64.ActiveCfg = Release|x64
+		{FC844711-AEB6-4FEB-9A9F-6623686056CB}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56555399-A442-4027-BA8D-C0E70EB754FC}
+	EndGlobalSection
+EndGlobal
