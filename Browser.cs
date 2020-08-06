@@ -26,16 +26,15 @@ namespace NiBBaBrowser
 
         private void InitializeForm()
         {
-            BrowserTabs.Height = ClientRectangle.Height - 25;
+            tabPageAdd.Height = ClientRectangle.Height - 25;
         }
 
         private void InitalizeBrowser()
         {
             Cef.Initialize(new CefSettings());
-            browser = new ChromiumWebBrowser("https://www.google.com");
-            browser.Dock = DockStyle.Fill;
-            BrowserTabs.TabPages[0].Controls.Add(browser);
-            browser.AddressChanged += Browser_AddressChanged;
+            //tabPageAdd.TabPages[0].Dispose();
+            tabPageAdd.TabPages[0].Dispose();
+            AddBrowserTab();
         }
 
         private void toolStripButtonGo_Click(object sender, EventArgs e)
@@ -60,6 +59,15 @@ namespace NiBBaBrowser
             }));
         }
 
+        private void Browser_TitleChanged(object sender, TitleChangedEventArgs e)
+        {
+            var selectedBrowser = (ChromiumWebBrowser)sender;
+            this.Invoke(new MethodInvoker(() =>
+            {
+                selectedBrowser.Parent.Text = e.Title;
+            }));
+        }
+
         private void toolStripButtonReload_Click(object sender, EventArgs e)
         {
             browser.Reload();
@@ -72,16 +80,42 @@ namespace NiBBaBrowser
                 Navigate(toolStripAdressBar.Text);
             }
         }
-        private void Navigate(string adress)
+        private void Navigate(string address)
         {
             try
             {
-                browser.Load(adress);
+                var selectedBrowser = (ChromiumWebBrowser)tabPageAdd.SelectedTab.Controls[0];
+                selectedBrowser.Load(address);
             }
             catch
             {
 
             }
+        }
+
+        private void AddBrowserTab()
+        {
+            //adding a tab
+            var newTabPage = new TabPage();
+            newTabPage.Text = "New Tab";
+            tabPageAdd.TabPages.Add(newTabPage);
+
+
+            //adding browser
+            browser = new ChromiumWebBrowser("https://google.com");
+            browser.Dock = DockStyle.Fill;
+            browser.AddressChanged += Browser_AddressChanged;
+            browser.TitleChanged += Browser_TitleChanged;
+            browser.AddressChanged += Browser_AddressChanged;
+            newTabPage.Controls.Add(browser);
+        }
+
+
+        private void toolStripButtonAddTab_Click(object sender, EventArgs e)
+        {
+            AddBrowserTab();
+            //select the latest browser tab
+            tabPageAdd.SelectedTab = tabPageAdd.TabPages[tabPageAdd.TabPages.Count - 1];
         }
     }
 }
